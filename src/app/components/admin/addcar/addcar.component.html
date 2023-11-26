@@ -1,41 +1,54 @@
 <div class="container">
     <h2> Ajout d'une voiture</h2>
-    <form >
-        <div>
+    <form [formGroup]="carForm" (ngSubmit)="onAjouter()">
+        <div formGroupName="infos">
             <label>Marque:</label>
-            <select class="form-control">
-              
+            <select formControlName="marque" class="form-control">
+                <option *ngFor="let m of lesmarques" [value]="m">{{m}}</option>
             </select>
             <label>Modèle:</label>
-            <input type="text" class="form-control" >
-
+            <input type="text" class="form-control" formControlName="modele">
+            <div *ngIf="Modele?.invalid && Modele?.touched" class="alert alert-warning">
+                Le modèle n'est pas valide
+            </div>
             <label>Immatriculation:</label>
-            <input type="text" class="form-control" >
-
+            <input type="text" class="form-control" formControlName="immatriculation">
+            <div *ngIf="isRequiredImm()" class="alert alert-warning">
+                L'immatriculation est un champ obligatoire
+            </div>
+            <div *ngIf="isValidPatternImm()" class="alert alert-warning">
+                Le format de l'immatriculation n'est pas correct
+            </div>
         </div>
         <label>Puissance:</label>
-        <input type="number" class="form-control" >
+        <input type="number" class="form-control" formControlName="puissance">
         <label>Photo:</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" formControlName="photo">
 
         <label>Date de mise en ciculation:</label>
-        <input type="date" class="form-control" >
+        <input type="date" class="form-control" formControlName="dateCirculation">
         <label>Mode Automatique</label>
-        <input type="checkbox" >
+        <input type="checkbox" formControlName="estAutomatique">
 
         <div>
             Liste des accesoires
-            <div >
-
-                <input type="button" class="btn btn-dark" value="+">
+            <div formArrayName="listAccessoires">
+                <div *ngFor="let d of ListAccessoires.controls;  index as i">
+                    <div [formGroupName]="i">
+                        Propriété: <input type="text" formControlName="propriete">
+                        Valeur: <input type="text" formControlName="valeur">
+                        <input type="button" (click)="onSupprimerAccessoire(i)" class="btn btn-light" value="-">
+                    </div>
+                </div>
+                <input type="button" (click)="onAjouterAccessoire()" class="btn btn-dark" value="+">
             </div>
         </div>
         <div>
-            <button type="submit"  class="btn btn-warning">
+            <button type="submit" [disabled]="carForm.invalid" class="btn btn-warning">
                 <i class="fa-solid fa-square-plus"></i>
                 Ajouter
             </button>
-            <button type="button" class="btn btn-secondary" >
+            <button type="button" class="btn btn-secondary" (click)="onEffacer()">
                 <i class="fa-solid fa-trash"></i>
                 Effacer
             </button>

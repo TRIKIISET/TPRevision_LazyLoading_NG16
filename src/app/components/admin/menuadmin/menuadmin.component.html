@@ -2,18 +2,18 @@
     <div class="container-fluid">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link">Accueil</a>
+            <a class="nav-link" routerLinkActive="active" routerLink="/admin/accueil">Accueil</a>
           </li>
         <li class="nav-item">
-          <a class="nav-link" >Liste des voitures</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/admin/cars">Liste des voitures</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" >Ajout d'une voiture</a>
+          <a class="nav-link" routerLinkActive="active"  routerLink="/admin/addcar">Ajout d'une voiture</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" >Déconnexion</a>
+          <a class="nav-link" (click)="onDisconnect()">Déconnexion</a>
         </li>
       </ul>
     </div>

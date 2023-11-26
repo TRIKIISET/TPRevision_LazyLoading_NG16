@@ -1,5 +1,5 @@
 <div class="container">
-
+  <app-menudirecteur></app-menudirecteur>
   <div class="mt-2">
     <table class="table">
       <thead class="table-dark">
@@ -15,7 +15,30 @@
         </tr>
       </thead>
       <tbody>
-
+        <tr *ngFor="let v of lesVoitures$ |async">
+          <td><img [src]="v.photo" [alt]="v.photo"></td>
+          <td>{{v.infos.marque |uppercase}}</td>
+          <td>{{v.infos.modele}}</td>
+          <td>{{v.infos.immatriculation |imm}}</td>
+          <td>{{v.dateCirculation}}</td>
+          <td>{{v.puissance}}</td>
+          <td><input type="checkbox" [checked]="v.estAutomatique"></td>
+          <td>
+            <ul>
+              <li *ngFor="let a of v.listAccessoires">
+                {{a.propriete}} :
+                <span [ngClass]="{
+                  'badge':true,
+                  'bg-warning': a.valeur=='Oui',
+                  'bg-secondary': a.valeur=='Non',
+                  'bg-dark': a.valeur!= 'Oui'&& a.valeur!='Non'
+                }">
+                  {{a.valeur}}
+                </span>
+              </li>
+            </ul>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

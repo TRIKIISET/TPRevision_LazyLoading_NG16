@@ -1,41 +1,52 @@
 <div class="container pt-6">
     <div class="row">
         <div class="col-5">
-            <ul class="list-group" >
+            <ul class="list-group" *ngIf="voiture">
                 <li class="list-group-item">
-                    <img src="" alt="">
+                    <img [src]="voiture.photo" alt="">
                     <br>
-
+                    <strong>
+                        {{voiture.infos.marque }} -
+                        {{voiture.infos.modele}} -
+                        {{voiture.infos.immatriculation|imm }}
+                    </strong>
                 </li>
 
                 <li class="list-group-item"><strong>Mise en circulation</strong>:
-                </li>
+                    {{voiture.dateCirculation| date:"dd/ MM /yyyy"}}</li>
                 <li class="list-group-item"> <strong> Puissance : </strong>
-
+                    {{voiture.puissance}}
                 </li>
                 <li class="list-group-item"> <strong> Automatique : </strong>
-                    <input type="checkbox" disabled >
+                    <input type="checkbox" disabled [checked]="voiture.estAutomatique">
                 </li>
 
                 <li class="list-group-item">
                     <strong>Liste des accessoires:</strong>
-
+                    <ul>
+                        <li *ngFor="let a of voiture.listAccessoires">
+                            {{a.propriete }} : {{a.valeur}}
+                        </li>
+                    </ul>
 
                 </li>
 
                 <li class="list-group-item">
-                    <button type="button" class="btn btn-warning" >
+                    <button type="button" class="btn btn-warning" (click)="display = !display">
                         <i class="fa-sharp fa-solid fa-pen"></i>
                          Modifier</button>
-                    <button type="button" class="btn btn-secondary" >
+                    <button type="button" class="btn btn-secondary" routerLink="/admin/cars" >
                         <i class="fa-solid fa-rotate-left"></i>
                         Retour
                     </button>
                 </li>
             </ul>
         </div>
-        <div class="col-7" >
-          
+        <div class="col-7" *ngIf="display">
+            <app-updatecar [voiture]= "voiture"
+        (updateDone)="onModification($event)"
+            ></app-updatecar>
         </div>
-    </div>    
+    </div>
+        <!-- (notify)="onModification($event)" -->
 </div>

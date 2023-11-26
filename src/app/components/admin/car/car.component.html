@@ -1,17 +1,17 @@
 <div class="container">
-    <h3>Voiture num </h3>
+    <h3>Voiture num : {{position +1}}</h3>
     <div class="d-flex justify-content-between">
         <div>
-            <img  alt="photo">
-            <strong>Marque</strong>: 
-            <strong>Modèle</strong>: 
+            <img [src]="car.photo" alt="photo">
+            <strong>Marque</strong>: {{car.infos.marque}}
+            <strong>Modèle</strong>: {{car.infos.modele}}  
         </div>
         <div>
-            <button type="button"  class="btn btn-success">
+            <button type="button" [routerLink]="['/admin/cars', car.id]" class="btn btn-success">
                 <i class="fa-solid fa-circle-info"></i> 
                 Détails  
             </button>
-            <button type="button" class="btn btn-secondary">
+            <button type="button" (click)="onSupprimer(car.id)" class="btn btn-secondary">
                 <i class="fa-solid fa-trash-can"></i>
                 Supprimer
             </button>

@@ -12,10 +12,12 @@ import { DashboardadminComponent } from './components/admin/dashboardadmin/dashb
 import { ErrorComponent } from './components/error/error.component';
 import { DashboarddirecteurComponent } from './components/Directeur/dashboarddirecteur/dashboarddirecteur.component';
 import { AddcarComponent } from './components/admin/addcar/addcar.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { AccueilComponent } from './components/admin/accueil/accueil.component';
 import { CarComponent } from './components/admin/car/car.component';
 import { MenudirecteurComponent } from './components/Directeur/menudirecteur/menudirecteur.component';
-
+import { ImmPipe } from './pipes/imm.pipe';
 
 @NgModule({
   declarations: [
@@ -31,11 +33,14 @@ import { MenudirecteurComponent } from './components/Directeur/menudirecteur/men
     AddcarComponent,
     AccueilComponent,
     CarComponent,
-    MenudirecteurComponent
+    MenudirecteurComponent,
+    ImmPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
