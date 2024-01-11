@@ -6,11 +6,6 @@ import { AppComponent } from './app.component';
 import { ErrorComponent } from './error/error.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AdminModule } from './admin/admin.module';
-import { DirecteurModule } from './directeur/directeur.module';
-import { AuthModule } from './auth/auth.module';
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,9 +13,6 @@ import { AuthModule } from './auth/auth.module';
   ],
   imports: [
     BrowserModule,
-    AdminModule,
-    DirecteurModule,
-    AuthModule,
     AppRoutingModule,
     HttpClientModule
   ],

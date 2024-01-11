@@ -9,7 +9,7 @@ import { AddcarComponent } from './components/addcar/addcar.component';
 
 const routes: Routes = [
   {
-    path: 'admin', title: 'Admin', component: DashboardadminComponent,
+    path: '', title: 'Admin', component: DashboardadminComponent,
     canActivate:[authAdminGuard],
     children: [
       { path: 'accueil', title: 'Accueil', component: AccueilComponent },

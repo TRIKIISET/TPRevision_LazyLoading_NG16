@@ -4,7 +4,7 @@ import { DashboarddirecteurComponent } from './components/dashboarddirecteur/das
 import { authDirGuard } from './auth-dir.guard';
 
 const routes: Routes = [
-  { path: 'directeur', title: 'Directeur', component: DashboarddirecteurComponent,
+  { path: '', title: 'Directeur', component: DashboarddirecteurComponent,
   canActivate:[authDirGuard] },
 ];
 
