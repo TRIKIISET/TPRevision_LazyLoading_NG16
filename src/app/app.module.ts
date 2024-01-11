@@ -3,43 +3,25 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { ListcarsComponent } from './components/admin/listcars/listcars.component';
-import { DetailcarComponent } from './components/admin/detailcar/detailcar.component';
-import { UpdatecarComponent } from './components/admin/updatecar/updatecar.component';
-import { MenuadminComponent } from './components/admin/menuadmin/menuadmin.component';
-import { DashboardadminComponent } from './components/admin/dashboardadmin/dashboardadmin.component';
-import { ErrorComponent } from './components/error/error.component';
-import { DashboarddirecteurComponent } from './components/Directeur/dashboarddirecteur/dashboarddirecteur.component';
-import { AddcarComponent } from './components/admin/addcar/addcar.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ErrorComponent } from './error/error.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AccueilComponent } from './components/admin/accueil/accueil.component';
-import { CarComponent } from './components/admin/car/car.component';
-import { MenudirecteurComponent } from './components/Directeur/menudirecteur/menudirecteur.component';
-import { ImmPipe } from './pipes/imm.pipe';
+
+import { AdminModule } from './admin/admin.module';
+import { DirecteurModule } from './directeur/directeur.module';
+import { AuthModule } from './auth/auth.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    ListcarsComponent,
-    DetailcarComponent,
-    UpdatecarComponent,
-    MenuadminComponent,
-    DashboardadminComponent,
-    ErrorComponent,
-    DashboarddirecteurComponent,
-    AddcarComponent,
-    AccueilComponent,
-    CarComponent,
-    MenudirecteurComponent,
-    ImmPipe
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
+    AdminModule,
+    DirecteurModule,
+    AuthModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
